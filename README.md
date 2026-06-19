@@ -11,7 +11,8 @@ https://github.com/ExBattou/SimpsonsApp
 LOS ERRORES SON LOS SIGUIENTES:
 
 Error 1: Uso de class en vez de data class en Entity de Room
-Archivo: app/src/main/java/com/example/simpsonsapp/data/local/entity/EpisodeEntity.kt Línea(s): 7
+Archivo: app/src/main/java/com/example/simpsonsapp/data/local/entity/EpisodeEntity.kt 
+Línea(s): 7
 Código actual:
 Kotlin
 class EpisodeEntity(
@@ -19,7 +20,8 @@ Qué está mal: La entidad de Room está definida como una class estándar. En A
 Cómo se debería solucionar: Cambiar la palabra clave class por data class.
 
 Error 2: Uso de class en vez de data class en Entity de Room
-Archivo: app/src/main/java/com/example/simpsonsapp/data/local/entity/RemoteKeyEntity.kt Línea(s): 7
+Archivo: app/src/main/java/com/example/simpsonsapp/data/local/entity/RemoteKeyEntity.kt
+Línea(s): 7
 Código actual:
 Kotlin
 class RemoteKeyEntity(
@@ -27,7 +29,8 @@ Qué está mal: Al igual que con EpisodeEntity, esta clase se utiliza para persi
 Cómo se debería solucionar: Cambiar la palabra clave class por data class.
 
 Error 3: Nombre de método en snake_case en interfaz Kotlin
-Archivo: app/src/main/java/com/example/simpsonsapp/domain/repository/EpisodeRepository.kt Línea(s): 8
+Archivo: app/src/main/java/com/example/simpsonsapp/domain/repository/EpisodeRepository.kt
+Línea(s): 8
 Código actual:
 Kotlin
 fun get_episodes(): Flow<PagingData<Episode>>
@@ -35,7 +38,8 @@ Qué está mal: El método usa snake_case (get_episodes), lo cual rompe las conv
 Cómo se debería solucionar: Renombrar el método a getEpisodes() para seguir las convenciones y coincidir con la implementación.
 
 Error 4: Discrepancia de nombres entre Interfaz e Implementación (Error de compilación)
-Archivo: app/src/main/java/com/example/simpsonsapp/data/repository/EpisodeRepositoryImpl.kt Línea(s): 20
+Archivo: app/src/main/java/com/example/simpsonsapp/data/repository/EpisodeRepositoryImpl.kt
+Línea(s): 20
 Código actual:
 Kotlin
 override fun getEpisodes(): Flow<PagingData<Episode>> {
@@ -43,7 +47,8 @@ Qué está mal: La clase intenta hacer un override de getEpisodes(), pero este m
 Cómo se debería solucionar: Asegurar que el nombre en el Repositorio coincida exactamente con el definido en la Interfaz (preferentemente cambiando ambos a getEpisodes).
 
 Error 5: Configuración de Retrofit incompleta (Missing Base URL)
-Archivo: app/src/main/java/com/example/simpsonsapp/di/DataModule.kt Línea(s): 36-39
+Archivo: app/src/main/java/com/example/simpsonsapp/di/DataModule.kt
+Línea(s): 36-39
 Código actual:
 Kotlin
 return Retrofit.Builder()
@@ -54,7 +59,8 @@ Qué está mal: El Retrofit.Builder no llama al método .baseUrl(...). Esto prov
 Cómo se debería solucionar: Agregar la llamada .baseUrl("https://thesimpsonsapi.com/") (o la URL que corresponda) antes de .build().
 
 Error 6: URL absoluta en anotación de Retrofit
-Archivo: app/src/main/java/com/example/simpsonsapp/data/remote/EpisodeRemoteMediator.kt Línea(s): 115
+Archivo: app/src/main/java/com/example/simpsonsapp/data/remote/EpisodeRemoteMediator.kt
+Línea(s): 115
 Código actual:
 Kotlin
 @GET("https://thesimpsonsapi.com/api/episodes")
@@ -62,7 +68,8 @@ Qué está mal: Se está utilizando una URL completa con "https://" dentro de la
 Cómo se debería solucionar: Cambiar el valor a una ruta relativa, por ejemplo: "api/episodes".
 
 Error 7: Ruta de Java Home hardcodeada en configuración del proyecto
-Archivo: gradle.properties Línea(s): 33
+Archivo: gradle.properties
+Línea(s): 33
 Código actual:
 Properties
 properties
@@ -71,7 +78,8 @@ Qué está mal: Se ha definido org.gradle.java.home con una ruta absoluta espec�
 Cómo se debería solucionar: Eliminar esa línea del archivo gradle.properties para permitir que el IDE o el sistema utilicen la variable de entorno JAVA_HOME estándar.
 
 Error 8: Importación con wildcard redundante o inútil
-Archivo: app/src/main/java/com/example/simpsonsapp/AppNavigation.kt Línea(s): 9
+Archivo: app/src/main/java/com/example/simpsonsapp/AppNavigation.kt
+Línea(s): 9
 Código actual:
 Kotlin
 import androidx.navigation.*
@@ -79,7 +87,8 @@ Qué está mal: Se está utilizando un wildcard import (*) para el paquete de na
 Cómo se debería solucionar: Reemplazar el wildcard por imports específicos para cada clase de navegación utilizada.
 
 Error 9: Importación con wildcard inútil
-Archivo: app/src/main/java/com/example/simpsonsapp/AppNavigation.kt Línea(s): 10
+Archivo: app/src/main/java/com/example/simpsonsapp/AppNavigation.kt
+Línea(s): 10
 Código actual:
 Kotlin
 import androidx.compose.*
@@ -87,7 +96,8 @@ Qué está mal: El paquete androidx.compose es un paquete base que no suele cont
 Cómo se debería solucionar: Eliminar el import y usar imports específicos para las funciones de Compose requeridas.
 
 Error 10: Bloque init y código huérfano fuera de clase
-Archivo: app/src/main/java/com/example/simpsonsapp/domain/model/Episode.kt Línea(s): 13-15
+Archivo: app/src/main/java/com/example/simpsonsapp/domain/model/Episode.kt
+Línea(s): 13-15
 Código actual:
 Kotlin
 init {
